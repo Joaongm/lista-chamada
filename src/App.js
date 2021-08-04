@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -31,10 +31,16 @@ function App() {
     }
   }, []);
 
-  function adicionando(){
+  const adicionando = useCallback(() => {
+      
     setAlunes([...alunes,registro]);
     setRegistro("");
-  };
+  },[registro,alunes]);
+
+
+  const totalAlunes = useMemo(() => alunes.length,[alunes]);
+
+
 
   const checking = 
   useState(
@@ -61,6 +67,8 @@ function App() {
     {alunes.map((alune)=>(<li key = {alune}>{alune}{checking}</li>))}
     </ul>
     </div>
+    <br/>
+    <p>Estamos com {totalAlunes} pessoas na turma!</p>
     <input className="entrada" type="text" value= {registro} onChange={(e)=> setRegistro(e.target.value)}
     />
     <button type="button" onClick={adicionando}>Add</button>

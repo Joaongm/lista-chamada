@@ -1,0 +1,23 @@
+3-) Explique com suas palavras qual a vantagem de utilizarmos o useMemo.
+
+O uso do hook useMemo diminui a carga de processamento, logo, sua vantagem é a otimização de desempenho
+
+4-) Utilize na Lista de chamadas criada, o useMemo para exibirmos o total de alunos cadastrados na nossa lista de chamada.
+
+const totalAlunes = useMemo(() => alunes.length,[alunes]);
+
+5-) Qual a diferença entre o useMemo e o UseCallback?
+
+são similares porém, com useCallback é possivel uma atualização a partir da alteração de quaisquer dos seus componentes filhos, ambos evitam recarregamento e processamento desnecessario na página
+
+
+6-) Utilize na lista de chamadas criada o UseCallback no método handleAdd criado.
+
+const adicionando = useCallback(() => {
+      
+    setAlunes([...alunes,registro]);
+    setRegistro("");
+  },[registro,alunes]);
+
+
+7-) Utilize os hooks useState e useEffect na página principal do seu projeto.
